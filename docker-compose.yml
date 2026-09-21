@@ -1,0 +1,26 @@
+services:
+  demo-video:
+    build: .
+    init: true
+    restart: unless-stopped
+    environment:
+      DEMO_VIDEO_TOKEN: ${DEMO_VIDEO_TOKEN:?}
+      DEMO_VIDEO_BASE: /data/quadro_demo_base.mp4
+      DEMO_VIDEO_DATA: /data/jobs
+      DEMO_VIDEO_REMOTION: /app/remotion
+    ports:
+      - "${DEMO_VIDEO_BIND:-0.0.0.0}:${DEMO_VIDEO_PORT:-8080}:8080"
+    volumes:
+      - ./data:/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python3",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health')",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
