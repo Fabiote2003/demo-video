@@ -1,4 +1,5 @@
 data
+base
 **/node_modules
 **/__pycache__
 **/.venv

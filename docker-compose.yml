@@ -12,6 +12,7 @@ services:
       - "${DEMO_VIDEO_BIND:-0.0.0.0}:${DEMO_VIDEO_PORT:-8080}:8080"
     volumes:
       - ./data:/data
+      - ./base/quadro_demo_base.mp4:/data/quadro_demo_base.mp4:ro
     healthcheck:
       test:
         [

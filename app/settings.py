@@ -28,7 +28,7 @@ def load_settings() -> Settings:
         sys.exit("Falta DEMO_VIDEO_TOKEN")
     return Settings(
         token=token,
-        base_video=_path("DEMO_VIDEO_BASE", ROOT / "data" / "quadro_demo_base.mp4"),
+        base_video=_path("DEMO_VIDEO_BASE", ROOT / "base" / "quadro_demo_base.mp4"),
         data_dir=_path("DEMO_VIDEO_DATA", ROOT / "data" / "jobs"),
         remotion_dir=_path("DEMO_VIDEO_REMOTION", ROOT / "remotion"),
         max_queued=3,
